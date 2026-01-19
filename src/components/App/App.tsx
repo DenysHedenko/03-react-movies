@@ -14,7 +14,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [selectedMovie, setSelectedMovie] = useState<Movie>(null);
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
   // Вибір картки з фільмом
   const handleSelect = (movie: Movie) => {
@@ -46,10 +46,10 @@ export default function App() {
     <>
       <SearchBar onSubmit={handleSearch} />
       {isLoading && <Loader />}
-      {isError && <ErrorMessage/>}
-      {movies.length > 0 && <MovieGrid onSelect={handleSelect} movies={movies}/>}
+      {isError && <ErrorMessage />}
+      {movies.length > 0 && <MovieGrid onSelect={handleSelect} movies={movies} />}
 
-      <MovieModal onClose={ } movie={ } />
+      {selectedMovie && (<MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)}/>)}
     </>
   );
 }
