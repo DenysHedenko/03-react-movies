@@ -1,6 +1,9 @@
 import axios from 'axios';
-import type { Movie, MoviesHttpResponse } from '../types/movie';
+import type { Movie } from '../types/movie';
 
+export interface MoviesHttpResponse {
+    results: Movie[];
+}
 
 const api = axios.create({
     baseURL: 'https://api.themoviedb.org/3/',
