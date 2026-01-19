@@ -5,7 +5,7 @@ import MovieModal from "../MovieModal/MovieModal";
 import type { Movie } from "../../types/movie";
 import fetchMovies from "../../services/movieService";
 import Loader from "../Loader/Loader";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 
@@ -44,12 +44,17 @@ export default function App() {
 
   return (
     <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <SearchBar onSubmit={handleSearch} />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
       {movies.length > 0 && <MovieGrid onSelect={handleSelect} movies={movies} />}
 
-      {selectedMovie && (<MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)}/>)}
+      {selectedMovie &&
+        (<MovieModal movie={selectedMovie} onClose={() => setSelectedMovie(null)} />)}
     </>
   );
 }
