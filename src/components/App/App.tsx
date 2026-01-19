@@ -1,5 +1,5 @@
 import { useState } from "react";
-import MovieGrid from "../MovierGrid/MovieGrid";
+import MovieGrid from "../MovieGrid/MovieGrid";
 import SearchBar from "../SearchBar/SearchBar";
 import MovieModal from "../MovieModal/MovieModal";
 import type { Movie } from "../../types/movie";
